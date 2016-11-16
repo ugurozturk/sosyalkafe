@@ -5,3 +5,11 @@
 
 <h2>Uygulama Indexi</h2>
 
+@{ 
+    foreach (string resimadres in ViewBag.listem)
+    {
+        //<img src="smiley.gif" alt='Smiley face' height='42' width='42'>
+        WriteLiteral("<img src='" + resimadres + "' alt='Smiley face' height='250' width='250'>");
+    }
+}
+
