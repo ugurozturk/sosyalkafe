@@ -15,9 +15,9 @@ namespace sosyalkafe
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+                url: "{area}/{controller}/{action}/{id}",
+                defaults: new { area = "Home", controller = "Index", action = "Index", id = UrlParameter.Optional }
+            ).DataTokens.Add("area", "Home"); ;
         }
     }
 }
