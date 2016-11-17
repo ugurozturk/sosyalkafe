@@ -1,0 +1,475 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="sosyalkafeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="firma_kodlari">
+          <Key>
+            <PropertyRef Name="firma_kodlari_id" />
+          </Key>
+          <Property Name="firma_kodlari_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firma_id" Type="int" />
+          <Property Name="kod_tipi_id" Type="int" />
+          <Property Name="firma_kod_adi" Type="varchar" MaxLength="55" />
+          <Property Name="aktif" Type="int" />
+          <Property Name="kayit_tarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="firma_odeme_hareketi">
+          <Key>
+            <PropertyRef Name="firma_odeme_hareketi_id" />
+          </Key>
+          <Property Name="firma_odeme_hareketi_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="odeme_miktari_id" Type="int" />
+          <Property Name="firma_id" Type="int" />
+          <Property Name="odeme_tarihi" Type="datetime" />
+          <Property Name="kayit_tarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="firmalar">
+          <Key>
+            <PropertyRef Name="firma_id" />
+          </Key>
+          <Property Name="firma_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firma_adi" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="firma_kullaniciadi" Type="varchar" MaxLength="55" Nullable="false" />
+          <Property Name="firma_sifresi" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="firma_konumu" Type="varchar" MaxLength="255" />
+          <Property Name="aktif" Type="int" Nullable="false" />
+          <Property Name="kayit_tarihi" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="kod_tipi">
+          <Key>
+            <PropertyRef Name="kod_tipi_id" />
+          </Key>
+          <Property Name="kod_tipi_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kod_tipi_adi" Type="varchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="musteri_gonderileri">
+          <Key>
+            <PropertyRef Name="musteri_gonderi_id" />
+          </Key>
+          <Property Name="musteri_gonderi_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="musteri_id" Type="int" />
+          <Property Name="firma_kodlari_id" Type="int" />
+          <Property Name="resim_adres" Type="varchar" MaxLength="5000" />
+          <Property Name="aktif" Type="int" />
+          <Property Name="kayit_tarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="musteriler">
+          <Key>
+            <PropertyRef Name="musteri_id" />
+          </Key>
+          <Property Name="musteri_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="musteri_adi" Type="varchar" MaxLength="255" />
+          <Property Name="musteri_kodu" Type="varchar" MaxLength="255" />
+          <Property Name="kayit_tarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="odeme_secenekleri">
+          <Key>
+            <PropertyRef Name="odeme_miktari_id" />
+          </Key>
+          <Property Name="odeme_miktari_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="odeme_adi" Type="varchar" MaxLength="255" />
+          <Property Name="odeme_miktari" Type="int" />
+        </EntityType>
+        <Association Name="FK__firma_kod__firma__5FB337D6">
+          <End Role="firmalar" Type="Self.firmalar" Multiplicity="0..1" />
+          <End Role="firma_kodlari" Type="Self.firma_kodlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firmalar">
+              <PropertyRef Name="firma_id" />
+            </Principal>
+            <Dependent Role="firma_kodlari">
+              <PropertyRef Name="firma_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__firma_kod__kod_t__60A75C0F">
+          <End Role="kod_tipi" Type="Self.kod_tipi" Multiplicity="0..1" />
+          <End Role="firma_kodlari" Type="Self.firma_kodlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kod_tipi">
+              <PropertyRef Name="kod_tipi_id" />
+            </Principal>
+            <Dependent Role="firma_kodlari">
+              <PropertyRef Name="kod_tipi_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__firma_ode__firma__4E88ABD4">
+          <End Role="firmalar" Type="Self.firmalar" Multiplicity="0..1" />
+          <End Role="firma_odeme_hareketi" Type="Self.firma_odeme_hareketi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firmalar">
+              <PropertyRef Name="firma_id" />
+            </Principal>
+            <Dependent Role="firma_odeme_hareketi">
+              <PropertyRef Name="firma_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__firma_ode__odeme__4D94879B">
+          <End Role="odeme_secenekleri" Type="Self.odeme_secenekleri" Multiplicity="0..1" />
+          <End Role="firma_odeme_hareketi" Type="Self.firma_odeme_hareketi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="odeme_secenekleri">
+              <PropertyRef Name="odeme_miktari_id" />
+            </Principal>
+            <Dependent Role="firma_odeme_hareketi">
+              <PropertyRef Name="odeme_miktari_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__musteri_g__firma__5EBF139D">
+          <End Role="firma_kodlari" Type="Self.firma_kodlari" Multiplicity="0..1" />
+          <End Role="musteri_gonderileri" Type="Self.musteri_gonderileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firma_kodlari">
+              <PropertyRef Name="firma_kodlari_id" />
+            </Principal>
+            <Dependent Role="musteri_gonderileri">
+              <PropertyRef Name="firma_kodlari_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__musteri_g__muste__49C3F6B7">
+          <End Role="musteriler" Type="Self.musteriler" Multiplicity="0..1" />
+          <End Role="musteri_gonderileri" Type="Self.musteri_gonderileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="musteriler">
+              <PropertyRef Name="musteri_id" />
+            </Principal>
+            <Dependent Role="musteri_gonderileri">
+              <PropertyRef Name="musteri_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sosyalkafeModelStoreContainer">
+          <EntitySet Name="firma_kodlari" EntityType="Self.firma_kodlari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="firma_odeme_hareketi" EntityType="Self.firma_odeme_hareketi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="firmalar" EntityType="Self.firmalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kod_tipi" EntityType="Self.kod_tipi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="musteri_gonderileri" EntityType="Self.musteri_gonderileri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="musteriler" EntityType="Self.musteriler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="odeme_secenekleri" EntityType="Self.odeme_secenekleri" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__firma_kod__firma__5FB337D6" Association="Self.FK__firma_kod__firma__5FB337D6">
+            <End Role="firmalar" EntitySet="firmalar" />
+            <End Role="firma_kodlari" EntitySet="firma_kodlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__firma_kod__kod_t__60A75C0F" Association="Self.FK__firma_kod__kod_t__60A75C0F">
+            <End Role="kod_tipi" EntitySet="kod_tipi" />
+            <End Role="firma_kodlari" EntitySet="firma_kodlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__firma_ode__firma__4E88ABD4" Association="Self.FK__firma_ode__firma__4E88ABD4">
+            <End Role="firmalar" EntitySet="firmalar" />
+            <End Role="firma_odeme_hareketi" EntitySet="firma_odeme_hareketi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__firma_ode__odeme__4D94879B" Association="Self.FK__firma_ode__odeme__4D94879B">
+            <End Role="odeme_secenekleri" EntitySet="odeme_secenekleri" />
+            <End Role="firma_odeme_hareketi" EntitySet="firma_odeme_hareketi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__musteri_g__firma__5EBF139D" Association="Self.FK__musteri_g__firma__5EBF139D">
+            <End Role="firma_kodlari" EntitySet="firma_kodlari" />
+            <End Role="musteri_gonderileri" EntitySet="musteri_gonderileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK__musteri_g__muste__49C3F6B7" Association="Self.FK__musteri_g__muste__49C3F6B7">
+            <End Role="musteriler" EntitySet="musteriler" />
+            <End Role="musteri_gonderileri" EntitySet="musteri_gonderileri" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sosyalkafeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="firma_kodlari">
+          <Key>
+            <PropertyRef Name="firma_kodlari_id" />
+          </Key>
+          <Property Name="firma_kodlari_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firma_id" Type="Int32" />
+          <Property Name="kod_tipi_id" Type="Int32" />
+          <Property Name="firma_kod_adi" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+          <Property Name="aktif" Type="Int32" />
+          <Property Name="kayit_tarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="firmalar" Relationship="Self.FK__firma_kod__firma__5FB337D6" FromRole="firma_kodlari" ToRole="firmalar" />
+          <NavigationProperty Name="kod_tipi" Relationship="Self.FK__firma_kod__kod_t__60A75C0F" FromRole="firma_kodlari" ToRole="kod_tipi" />
+          <NavigationProperty Name="musteri_gonderileri" Relationship="Self.FK__musteri_g__firma__5EBF139D" FromRole="firma_kodlari" ToRole="musteri_gonderileri" />
+        </EntityType>
+        <EntityType Name="firma_odeme_hareketi">
+          <Key>
+            <PropertyRef Name="firma_odeme_hareketi_id" />
+          </Key>
+          <Property Name="firma_odeme_hareketi_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="odeme_miktari_id" Type="Int32" />
+          <Property Name="firma_id" Type="Int32" />
+          <Property Name="odeme_tarihi" Type="DateTime" Precision="3" />
+          <Property Name="kayit_tarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="firmalar" Relationship="Self.FK__firma_ode__firma__4E88ABD4" FromRole="firma_odeme_hareketi" ToRole="firmalar" />
+          <NavigationProperty Name="odeme_secenekleri" Relationship="Self.FK__firma_ode__odeme__4D94879B" FromRole="firma_odeme_hareketi" ToRole="odeme_secenekleri" />
+        </EntityType>
+        <EntityType Name="firmalar">
+          <Key>
+            <PropertyRef Name="firma_id" />
+          </Key>
+          <Property Name="firma_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firma_adi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firma_kullaniciadi" Type="String" MaxLength="55" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firma_sifresi" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firma_konumu" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="aktif" Type="Int32" Nullable="false" />
+          <Property Name="kayit_tarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="firma_kodlari" Relationship="Self.FK__firma_kod__firma__5FB337D6" FromRole="firmalar" ToRole="firma_kodlari" />
+          <NavigationProperty Name="firma_odeme_hareketi" Relationship="Self.FK__firma_ode__firma__4E88ABD4" FromRole="firmalar" ToRole="firma_odeme_hareketi" />
+        </EntityType>
+        <EntityType Name="kod_tipi">
+          <Key>
+            <PropertyRef Name="kod_tipi_id" />
+          </Key>
+          <Property Name="kod_tipi_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kod_tipi_adi" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="firma_kodlari" Relationship="Self.FK__firma_kod__kod_t__60A75C0F" FromRole="kod_tipi" ToRole="firma_kodlari" />
+        </EntityType>
+        <EntityType Name="musteri_gonderileri">
+          <Key>
+            <PropertyRef Name="musteri_gonderi_id" />
+          </Key>
+          <Property Name="musteri_gonderi_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="musteri_id" Type="Int32" />
+          <Property Name="firma_kodlari_id" Type="Int32" />
+          <Property Name="resim_adres" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="aktif" Type="Int32" />
+          <Property Name="kayit_tarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="firma_kodlari" Relationship="Self.FK__musteri_g__firma__5EBF139D" FromRole="musteri_gonderileri" ToRole="firma_kodlari" />
+          <NavigationProperty Name="musteriler" Relationship="Self.FK__musteri_g__muste__49C3F6B7" FromRole="musteri_gonderileri" ToRole="musteriler" />
+        </EntityType>
+        <EntityType Name="musteriler">
+          <Key>
+            <PropertyRef Name="musteri_id" />
+          </Key>
+          <Property Name="musteri_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="musteri_adi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="musteri_kodu" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="kayit_tarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="musteri_gonderileri" Relationship="Self.FK__musteri_g__muste__49C3F6B7" FromRole="musteriler" ToRole="musteri_gonderileri" />
+        </EntityType>
+        <EntityType Name="odeme_secenekleri">
+          <Key>
+            <PropertyRef Name="odeme_miktari_id" />
+          </Key>
+          <Property Name="odeme_miktari_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="odeme_adi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="odeme_miktari" Type="Int32" />
+          <NavigationProperty Name="firma_odeme_hareketi" Relationship="Self.FK__firma_ode__odeme__4D94879B" FromRole="odeme_secenekleri" ToRole="firma_odeme_hareketi" />
+        </EntityType>
+        <Association Name="FK__firma_kod__firma__5FB337D6">
+          <End Role="firmalar" Type="Self.firmalar" Multiplicity="0..1" />
+          <End Role="firma_kodlari" Type="Self.firma_kodlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firmalar">
+              <PropertyRef Name="firma_id" />
+            </Principal>
+            <Dependent Role="firma_kodlari">
+              <PropertyRef Name="firma_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__firma_kod__kod_t__60A75C0F">
+          <End Role="kod_tipi" Type="Self.kod_tipi" Multiplicity="0..1" />
+          <End Role="firma_kodlari" Type="Self.firma_kodlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kod_tipi">
+              <PropertyRef Name="kod_tipi_id" />
+            </Principal>
+            <Dependent Role="firma_kodlari">
+              <PropertyRef Name="kod_tipi_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__musteri_g__firma__5EBF139D">
+          <End Role="firma_kodlari" Type="Self.firma_kodlari" Multiplicity="0..1" />
+          <End Role="musteri_gonderileri" Type="Self.musteri_gonderileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firma_kodlari">
+              <PropertyRef Name="firma_kodlari_id" />
+            </Principal>
+            <Dependent Role="musteri_gonderileri">
+              <PropertyRef Name="firma_kodlari_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__firma_ode__firma__4E88ABD4">
+          <End Role="firmalar" Type="Self.firmalar" Multiplicity="0..1" />
+          <End Role="firma_odeme_hareketi" Type="Self.firma_odeme_hareketi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firmalar">
+              <PropertyRef Name="firma_id" />
+            </Principal>
+            <Dependent Role="firma_odeme_hareketi">
+              <PropertyRef Name="firma_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__firma_ode__odeme__4D94879B">
+          <End Role="odeme_secenekleri" Type="Self.odeme_secenekleri" Multiplicity="0..1" />
+          <End Role="firma_odeme_hareketi" Type="Self.firma_odeme_hareketi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="odeme_secenekleri">
+              <PropertyRef Name="odeme_miktari_id" />
+            </Principal>
+            <Dependent Role="firma_odeme_hareketi">
+              <PropertyRef Name="odeme_miktari_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__musteri_g__muste__49C3F6B7">
+          <End Role="musteriler" Type="Self.musteriler" Multiplicity="0..1" />
+          <End Role="musteri_gonderileri" Type="Self.musteri_gonderileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="musteriler">
+              <PropertyRef Name="musteri_id" />
+            </Principal>
+            <Dependent Role="musteri_gonderileri">
+              <PropertyRef Name="musteri_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sosyalkafeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="firma_kodlari" EntityType="Self.firma_kodlari" />
+          <EntitySet Name="firma_odeme_hareketi" EntityType="Self.firma_odeme_hareketi" />
+          <EntitySet Name="firmalar" EntityType="Self.firmalar" />
+          <EntitySet Name="kod_tipi" EntityType="Self.kod_tipi" />
+          <EntitySet Name="musteri_gonderileri" EntityType="Self.musteri_gonderileri" />
+          <EntitySet Name="musteriler" EntityType="Self.musteriler" />
+          <EntitySet Name="odeme_secenekleri" EntityType="Self.odeme_secenekleri" />
+          <AssociationSet Name="FK__firma_kod__firma__5FB337D6" Association="Self.FK__firma_kod__firma__5FB337D6">
+            <End Role="firmalar" EntitySet="firmalar" />
+            <End Role="firma_kodlari" EntitySet="firma_kodlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__firma_kod__kod_t__60A75C0F" Association="Self.FK__firma_kod__kod_t__60A75C0F">
+            <End Role="kod_tipi" EntitySet="kod_tipi" />
+            <End Role="firma_kodlari" EntitySet="firma_kodlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__musteri_g__firma__5EBF139D" Association="Self.FK__musteri_g__firma__5EBF139D">
+            <End Role="firma_kodlari" EntitySet="firma_kodlari" />
+            <End Role="musteri_gonderileri" EntitySet="musteri_gonderileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK__firma_ode__firma__4E88ABD4" Association="Self.FK__firma_ode__firma__4E88ABD4">
+            <End Role="firmalar" EntitySet="firmalar" />
+            <End Role="firma_odeme_hareketi" EntitySet="firma_odeme_hareketi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__firma_ode__odeme__4D94879B" Association="Self.FK__firma_ode__odeme__4D94879B">
+            <End Role="odeme_secenekleri" EntitySet="odeme_secenekleri" />
+            <End Role="firma_odeme_hareketi" EntitySet="firma_odeme_hareketi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__musteri_g__muste__49C3F6B7" Association="Self.FK__musteri_g__muste__49C3F6B7">
+            <End Role="musteriler" EntitySet="musteriler" />
+            <End Role="musteri_gonderileri" EntitySet="musteri_gonderileri" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="sosyalkafeModelStoreContainer" CdmEntityContainer="sosyalkafeEntities">
+          <EntitySetMapping Name="firma_kodlari">
+            <EntityTypeMapping TypeName="sosyalkafeModel.firma_kodlari">
+              <MappingFragment StoreEntitySet="firma_kodlari">
+                <ScalarProperty Name="firma_kodlari_id" ColumnName="firma_kodlari_id" />
+                <ScalarProperty Name="firma_id" ColumnName="firma_id" />
+                <ScalarProperty Name="kod_tipi_id" ColumnName="kod_tipi_id" />
+                <ScalarProperty Name="firma_kod_adi" ColumnName="firma_kod_adi" />
+                <ScalarProperty Name="aktif" ColumnName="aktif" />
+                <ScalarProperty Name="kayit_tarihi" ColumnName="kayit_tarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="firma_odeme_hareketi">
+            <EntityTypeMapping TypeName="sosyalkafeModel.firma_odeme_hareketi">
+              <MappingFragment StoreEntitySet="firma_odeme_hareketi">
+                <ScalarProperty Name="firma_odeme_hareketi_id" ColumnName="firma_odeme_hareketi_id" />
+                <ScalarProperty Name="odeme_miktari_id" ColumnName="odeme_miktari_id" />
+                <ScalarProperty Name="firma_id" ColumnName="firma_id" />
+                <ScalarProperty Name="odeme_tarihi" ColumnName="odeme_tarihi" />
+                <ScalarProperty Name="kayit_tarihi" ColumnName="kayit_tarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="firmalar">
+            <EntityTypeMapping TypeName="sosyalkafeModel.firmalar">
+              <MappingFragment StoreEntitySet="firmalar">
+                <ScalarProperty Name="firma_id" ColumnName="firma_id" />
+                <ScalarProperty Name="firma_adi" ColumnName="firma_adi" />
+                <ScalarProperty Name="firma_kullaniciadi" ColumnName="firma_kullaniciadi" />
+                <ScalarProperty Name="firma_sifresi" ColumnName="firma_sifresi" />
+                <ScalarProperty Name="firma_konumu" ColumnName="firma_konumu" />
+                <ScalarProperty Name="aktif" ColumnName="aktif" />
+                <ScalarProperty Name="kayit_tarihi" ColumnName="kayit_tarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kod_tipi">
+            <EntityTypeMapping TypeName="sosyalkafeModel.kod_tipi">
+              <MappingFragment StoreEntitySet="kod_tipi">
+                <ScalarProperty Name="kod_tipi_id" ColumnName="kod_tipi_id" />
+                <ScalarProperty Name="kod_tipi_adi" ColumnName="kod_tipi_adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="musteri_gonderileri">
+            <EntityTypeMapping TypeName="sosyalkafeModel.musteri_gonderileri">
+              <MappingFragment StoreEntitySet="musteri_gonderileri">
+                <ScalarProperty Name="musteri_gonderi_id" ColumnName="musteri_gonderi_id" />
+                <ScalarProperty Name="musteri_id" ColumnName="musteri_id" />
+                <ScalarProperty Name="firma_kodlari_id" ColumnName="firma_kodlari_id" />
+                <ScalarProperty Name="resim_adres" ColumnName="resim_adres" />
+                <ScalarProperty Name="aktif" ColumnName="aktif" />
+                <ScalarProperty Name="kayit_tarihi" ColumnName="kayit_tarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="musteriler">
+            <EntityTypeMapping TypeName="sosyalkafeModel.musteriler">
+              <MappingFragment StoreEntitySet="musteriler">
+                <ScalarProperty Name="musteri_id" ColumnName="musteri_id" />
+                <ScalarProperty Name="musteri_adi" ColumnName="musteri_adi" />
+                <ScalarProperty Name="musteri_kodu" ColumnName="musteri_kodu" />
+                <ScalarProperty Name="kayit_tarihi" ColumnName="kayit_tarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="odeme_secenekleri">
+            <EntityTypeMapping TypeName="sosyalkafeModel.odeme_secenekleri">
+              <MappingFragment StoreEntitySet="odeme_secenekleri">
+                <ScalarProperty Name="odeme_miktari_id" ColumnName="odeme_miktari_id" />
+                <ScalarProperty Name="odeme_adi" ColumnName="odeme_adi" />
+                <ScalarProperty Name="odeme_miktari" ColumnName="odeme_miktari" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,15 +1,15 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 
 <h2>Gosteriye Hoş geldiniz</h2>
 
 @{
-    foreach (string resimadres in ViewBag.listem)
+    List<sosyalkafe.Models.musteri_gonderileri> mgonderileri = ViewBag.listem;
+    foreach (sosyalkafe.Models.musteri_gonderileri resimadres in mgonderileri)
     {
         //<img src="smiley.gif" alt='Smiley face' height='42' width='42'>
-        WriteLiteral("<img src='" + resimadres + "' alt='Smiley face' height='250' width='250'>");
+        WriteLiteral("<img src='" + resimadres.resim_adres + "' alt='Smiley face' height='250' width='250'>");
     }
 }
 

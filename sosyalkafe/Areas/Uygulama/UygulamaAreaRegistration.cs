@@ -15,12 +15,17 @@ namespace sosyalkafe.Areas.Uygulama
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
+                "Uygulama_base",
+                "Uygulama",
+                new { controller = "Uygulama", action = "Index", firmaadi = UrlParameter.Optional }
+            );
+
+            context.MapRoute(
                 "Uygulama_yonlen",
                 "Uygulama/{firmaadi}",
                 new { controller = "Uygulama", action = "Gosteri", firmaadi = UrlParameter.Optional }
             );
-
-
+            
             context.MapRoute(
                 "Uygulama_default",
                 "Uygulama/{controller}/{action}/{id}",
