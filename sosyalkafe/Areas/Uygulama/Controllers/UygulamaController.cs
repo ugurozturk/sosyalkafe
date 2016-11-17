@@ -14,6 +14,11 @@ namespace sosyalkafe.Areas.Uygulama.Controllers
         // GET: Uygulama/Uygulama
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult Gosteri(string firmaadi)
+        {
             string urlAddress = "https://www.instagram.com/explore/tags/hdss/"; //tagı dinamik olarak değiştir.
             string regexi = string.Format("display_src\": \"(.*?)\"");
 
@@ -50,9 +55,9 @@ namespace sosyalkafe.Areas.Uygulama.Controllers
             }
             ViewBag.listem = listem;
             
-
-
             return View();
         }
+
+
     }
 }
