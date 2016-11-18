@@ -30,9 +30,12 @@ namespace sosyalkafe.Areas.Uygulama.Controllers
                  select a).ToList();
 
             ViewBag.listem = mgonderileri;
+            if (mgonderileri.Count>0)
+            {
+                ViewBag.firmakodu = mgonderileri[0].firma_kodlari.firma_kod_adi;
+            }
+            
             return View();
         }
-
-
     }
 }

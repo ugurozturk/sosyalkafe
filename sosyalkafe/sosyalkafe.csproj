@@ -183,6 +183,27 @@
     <Content Include="App_Data\sosyalkafe_log.ldf">
       <DependentUpon>sosyalkafe.mdf</DependentUpon>
     </Content>
+    <Content Include="Areas\Uygulama\Content\css\bootstrap.min.css" />
+    <Content Include="Areas\Uygulama\Content\css\font-awesome.min.css" />
+    <Content Include="Areas\Uygulama\Content\css\normalize.css" />
+    <Content Include="Areas\Uygulama\Content\css\screen.css" />
+    <Content Include="Areas\Uygulama\Content\fonts\fontawesome-webfonte0a5-2.html" />
+    <Content Include="Areas\Uygulama\Content\fonts\fontawesome-webfonte0a5.html" />
+    <Content Include="Areas\Uygulama\Content\fonts\glyphicons-halflings-regular-2.html" />
+    <Content Include="Areas\Uygulama\Content\fonts\glyphicons-halflings-regular-3.html" />
+    <Content Include="Areas\Uygulama\Content\fonts\glyphicons-halflings-regular-4.html" />
+    <Content Include="Areas\Uygulama\Content\fonts\glyphicons-halflings-regular-5.html" />
+    <Content Include="Areas\Uygulama\Content\fonts\glyphicons-halflings-regular.html" />
+    <Content Include="Areas\Uygulama\Content\fonts\glyphicons-halflings-regulard41d.html" />
+    <Content Include="Areas\Uygulama\Content\js\jquery.min.js" />
+    <Content Include="Areas\Uygulama\Content\screen\creoline-logo-white-copy.png" />
+    <Content Include="Areas\Uygulama\Content\screen\creoline-logo-white-normal.png" />
+    <Content Include="Areas\Uygulama\Content\screen\creoline-logo-white.png" />
+    <Content Include="Areas\Uygulama\Content\screen\js\imagesloaded.min.js" />
+    <Content Include="Areas\Uygulama\Content\screen\logo-white-2.png" />
+    <Content Include="Areas\Uygulama\Content\screen\logo-white-3.png" />
+    <Content Include="Areas\Uygulama\Content\screen\logo-white.png" />
+    <Content Include="Areas\Uygulama\Content\screen\wall.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -220,6 +241,10 @@
     <Content Include="Models\sosyalkafeentity.edmx.diagram">
       <DependentUpon>sosyalkafeentity.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Uygulama\Content\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Areas\Uygulama\Content\fonts\fontawesome-webfonte0a5.eot" />
+    <Content Include="Areas\Uygulama\Content\fonts\fontawesome-webfonte0a5.svg" />
+    <Content Include="Areas\Uygulama\Content\fonts\fontawesome-webfonte0a5.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

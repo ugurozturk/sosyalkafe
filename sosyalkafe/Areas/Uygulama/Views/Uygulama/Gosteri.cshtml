@@ -2,14 +2,81 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Gosteriye Hoş geldiniz</h2>
+<div class="logo">
+    <img src="~/Areas/Uygulama/Content/screen/logo-white.png" width="300" alt="Hookah Lounge & Café" />
+</div>
 
-@{
-    List<sosyalkafe.Models.musteri_gonderileri> mgonderileri = ViewBag.listem;
-    foreach (sosyalkafe.Models.musteri_gonderileri resimadres in mgonderileri)
-    {
-        //<img src="smiley.gif" alt='Smiley face' height='42' width='42'>
-        WriteLiteral("<img src='" + resimadres.resim_adres + "' alt='Smiley face' height='250' width='250'>");
-    }
-}
+<div class="creoline-branding">
+    <img src="~/Areas/Uygulama/Content/screen/creoline-logo-white.png" width="140" alt="creoline GBR" />
+</div>
+
+<div id="weather"><h2>13 °C</h2></div>
+
+
+<div class="content">
+
+    <div class="row">
+        <div class="col-lg-4">
+
+            <div class="widget">
+                <h1><i class="fa fa-calendar"></i> &nbsp; ETKİNLİKLER</h1>
+
+                <div class="eventsWidget">
+                    <div style="text-align: center; margin: 50px 0;">
+                        <p style="font-size: 28px;">Şuanda bir etkinlik bulunmamakta.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="socials">
+                    <div class="facebook">
+                        <i class="fa fa-facebook"></i> &nbsp;&nbsp;&nbsp; Şirket FB
+                    </div>
+                    <div class="instagram">
+                        <i class="fa fa-instagram"></i> &nbsp;&nbsp;&nbsp; Twitter
+                    </div>
+
+                    <div class="website">
+                        <i class="fa fa-globe"></i> &nbsp;&nbsp;&nbsp; http://websiteadresi.com
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-8">
+
+            <div class="widget" style="padding-bottom:0">
+                <h1><i class="fa fa-instagram"></i> &nbsp; Canlı Instagram Akışı <span style="color:#9FD5D9; font-weight: 500; float:right;">#@ViewBag.firmakodu</span></h1>
+
+                <div class="instagramWidget">
+                    @{
+                        List<sosyalkafe.Models.musteri_gonderileri> mgonderileri = ViewBag.listem;
+                        foreach (sosyalkafe.Models.musteri_gonderileri resimadres in mgonderileri)
+                        {
+                            WriteLiteral("<div class=\"item\"><img src=\""+ resimadres.resim_adres + "\" width=\"100% \"></div>");
+                        }
+                    }
+
+                </div>
+                <div style="clear:both"></div>
+
+                <div style="width: 100%; height: 10px;"></div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="overlay"></div>
+<div class="message"></div>
+
+<script src="~/Areas/Uygulama/Content/js/jquery.min.js"></script>
+<script src="~/Areas/Uygulama/Content/screen/js/imagesloaded.min.js"></script>
+
+
+
 
