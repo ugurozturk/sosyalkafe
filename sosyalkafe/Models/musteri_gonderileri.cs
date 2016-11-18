@@ -18,6 +18,7 @@ namespace sosyalkafe.Models
         public Nullable<int> musteri_id { get; set; }
         public Nullable<int> firma_kodlari_id { get; set; }
         public string resim_adres { get; set; }
+        public Nullable<int> populerlik_puani { get; set; }
         public Nullable<int> aktif { get; set; }
         public Nullable<System.DateTime> kayit_tarihi { get; set; }
     

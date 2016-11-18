@@ -4,20 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fe28a4e178564a3789f3705c4e502149" Name="Diagram1">
+      <Diagram DiagramId="b105bfcae4124b7dbb3bf751e391a15c" Name="Diagram1">
         <EntityTypeShape EntityType="sosyalkafeModel.firma_kodlari" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="sosyalkafeModel.firma_odeme_hareketi" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="sosyalkafeModel.firmalar" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="sosyalkafeModel.kod_tipi" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="sosyalkafeModel.musteri_gonderileri" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="sosyalkafeModel.musteri_gonderileri" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="sosyalkafeModel.musteriler" Width="1.5" PointX="6" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="sosyalkafeModel.odeme_secenekleri" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="sosyalkafeModel.FK__firma_kod__firma__5FB337D6" ManuallyRouted="false" />
         <AssociationConnector Association="sosyalkafeModel.FK__firma_kod__kod_t__60A75C0F" ManuallyRouted="false" />
-        <AssociationConnector Association="sosyalkafeModel.FK__musteri_g__firma__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="sosyalkafeModel.FK__musteri_g__firma__05D8E0BE" ManuallyRouted="false" />
         <AssociationConnector Association="sosyalkafeModel.FK__firma_ode__firma__4E88ABD4" ManuallyRouted="false" />
         <AssociationConnector Association="sosyalkafeModel.FK__firma_ode__odeme__4D94879B" ManuallyRouted="false" />
-        <AssociationConnector Association="sosyalkafeModel.FK__musteri_g__muste__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="sosyalkafeModel.FK__musteri_g__muste__04E4BC85" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

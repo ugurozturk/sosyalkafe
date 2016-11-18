@@ -27,8 +27,27 @@ namespace sosyalkafe.Areas.Uygulama.Controllers
                 (from a in ent.musteri_gonderileri
                  where a.firma_kodlari.aktif == 1 &&
                  a.firma_kodlari.firmalar.firma_kullaniciadi == firmaadi
-                 select a).ToList();
+                 orderby a.musteri_gonderi_id descending
+                 select a).Take(30).ToList();
 
+            List<musteri_gonderileri> top3gonderi =
+                (from a in mgonderileri
+                 where a.populerlik_puani != null
+                 orderby a.populerlik_puani descending
+                 select a).Take(3).ToList();
+
+            //Çektiğim top3 ü listeden sil.
+            foreach (musteri_gonderileri item in top3gonderi)
+            {
+                mgonderileri.Remove(item);
+            }
+
+            //Kalan listeden 3ü çek.
+            mgonderileri = mgonderileri.Take(3).ToList();
+
+            //hepsini birleştir.
+            mgonderileri.InsertRange(0, top3gonderi);
+            
             ViewBag.listem = mgonderileri;
             if (mgonderileri.Count>0)
             {

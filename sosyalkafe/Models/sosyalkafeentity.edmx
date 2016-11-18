@@ -53,6 +53,7 @@
           <Property Name="musteri_id" Type="int" />
           <Property Name="firma_kodlari_id" Type="int" />
           <Property Name="resim_adres" Type="varchar" MaxLength="5000" />
+          <Property Name="populerlik_puani" Type="int" />
           <Property Name="aktif" Type="int" />
           <Property Name="kayit_tarihi" Type="datetime" />
         </EntityType>
@@ -121,7 +122,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__musteri_g__firma__5EBF139D">
+        <Association Name="FK__musteri_g__firma__05D8E0BE">
           <End Role="firma_kodlari" Type="Self.firma_kodlari" Multiplicity="0..1" />
           <End Role="musteri_gonderileri" Type="Self.musteri_gonderileri" Multiplicity="*" />
           <ReferentialConstraint>
@@ -133,7 +134,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__musteri_g__muste__49C3F6B7">
+        <Association Name="FK__musteri_g__muste__04E4BC85">
           <End Role="musteriler" Type="Self.musteriler" Multiplicity="0..1" />
           <End Role="musteri_gonderileri" Type="Self.musteri_gonderileri" Multiplicity="*" />
           <ReferentialConstraint>
@@ -169,11 +170,11 @@
             <End Role="odeme_secenekleri" EntitySet="odeme_secenekleri" />
             <End Role="firma_odeme_hareketi" EntitySet="firma_odeme_hareketi" />
           </AssociationSet>
-          <AssociationSet Name="FK__musteri_g__firma__5EBF139D" Association="Self.FK__musteri_g__firma__5EBF139D">
+          <AssociationSet Name="FK__musteri_g__firma__05D8E0BE" Association="Self.FK__musteri_g__firma__05D8E0BE">
             <End Role="firma_kodlari" EntitySet="firma_kodlari" />
             <End Role="musteri_gonderileri" EntitySet="musteri_gonderileri" />
           </AssociationSet>
-          <AssociationSet Name="FK__musteri_g__muste__49C3F6B7" Association="Self.FK__musteri_g__muste__49C3F6B7">
+          <AssociationSet Name="FK__musteri_g__muste__04E4BC85" Association="Self.FK__musteri_g__muste__04E4BC85">
             <End Role="musteriler" EntitySet="musteriler" />
             <End Role="musteri_gonderileri" EntitySet="musteri_gonderileri" />
           </AssociationSet>
@@ -195,7 +196,7 @@
           <Property Name="kayit_tarihi" Type="DateTime" Precision="3" />
           <NavigationProperty Name="firmalar" Relationship="Self.FK__firma_kod__firma__5FB337D6" FromRole="firma_kodlari" ToRole="firmalar" />
           <NavigationProperty Name="kod_tipi" Relationship="Self.FK__firma_kod__kod_t__60A75C0F" FromRole="firma_kodlari" ToRole="kod_tipi" />
-          <NavigationProperty Name="musteri_gonderileri" Relationship="Self.FK__musteri_g__firma__5EBF139D" FromRole="firma_kodlari" ToRole="musteri_gonderileri" />
+          <NavigationProperty Name="musteri_gonderileri" Relationship="Self.FK__musteri_g__firma__05D8E0BE" FromRole="firma_kodlari" ToRole="musteri_gonderileri" />
         </EntityType>
         <EntityType Name="firma_odeme_hareketi">
           <Key>
@@ -239,10 +240,11 @@
           <Property Name="musteri_id" Type="Int32" />
           <Property Name="firma_kodlari_id" Type="Int32" />
           <Property Name="resim_adres" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="populerlik_puani" Type="Int32" />
           <Property Name="aktif" Type="Int32" />
           <Property Name="kayit_tarihi" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="firma_kodlari" Relationship="Self.FK__musteri_g__firma__5EBF139D" FromRole="musteri_gonderileri" ToRole="firma_kodlari" />
-          <NavigationProperty Name="musteriler" Relationship="Self.FK__musteri_g__muste__49C3F6B7" FromRole="musteri_gonderileri" ToRole="musteriler" />
+          <NavigationProperty Name="firma_kodlari" Relationship="Self.FK__musteri_g__firma__05D8E0BE" FromRole="musteri_gonderileri" ToRole="firma_kodlari" />
+          <NavigationProperty Name="musteriler" Relationship="Self.FK__musteri_g__muste__04E4BC85" FromRole="musteri_gonderileri" ToRole="musteriler" />
         </EntityType>
         <EntityType Name="musteriler">
           <Key>
@@ -252,7 +254,7 @@
           <Property Name="musteri_adi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="musteri_kodu" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="kayit_tarihi" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="musteri_gonderileri" Relationship="Self.FK__musteri_g__muste__49C3F6B7" FromRole="musteriler" ToRole="musteri_gonderileri" />
+          <NavigationProperty Name="musteri_gonderileri" Relationship="Self.FK__musteri_g__muste__04E4BC85" FromRole="musteriler" ToRole="musteri_gonderileri" />
         </EntityType>
         <EntityType Name="odeme_secenekleri">
           <Key>
@@ -287,7 +289,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__musteri_g__firma__5EBF139D">
+        <Association Name="FK__musteri_g__firma__05D8E0BE">
           <End Role="firma_kodlari" Type="Self.firma_kodlari" Multiplicity="0..1" />
           <End Role="musteri_gonderileri" Type="Self.musteri_gonderileri" Multiplicity="*" />
           <ReferentialConstraint>
@@ -323,7 +325,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__musteri_g__muste__49C3F6B7">
+        <Association Name="FK__musteri_g__muste__04E4BC85">
           <End Role="musteriler" Type="Self.musteriler" Multiplicity="0..1" />
           <End Role="musteri_gonderileri" Type="Self.musteri_gonderileri" Multiplicity="*" />
           <ReferentialConstraint>
@@ -351,7 +353,7 @@
             <End Role="kod_tipi" EntitySet="kod_tipi" />
             <End Role="firma_kodlari" EntitySet="firma_kodlari" />
           </AssociationSet>
-          <AssociationSet Name="FK__musteri_g__firma__5EBF139D" Association="Self.FK__musteri_g__firma__5EBF139D">
+          <AssociationSet Name="FK__musteri_g__firma__05D8E0BE" Association="Self.FK__musteri_g__firma__05D8E0BE">
             <End Role="firma_kodlari" EntitySet="firma_kodlari" />
             <End Role="musteri_gonderileri" EntitySet="musteri_gonderileri" />
           </AssociationSet>
@@ -363,7 +365,7 @@
             <End Role="odeme_secenekleri" EntitySet="odeme_secenekleri" />
             <End Role="firma_odeme_hareketi" EntitySet="firma_odeme_hareketi" />
           </AssociationSet>
-          <AssociationSet Name="FK__musteri_g__muste__49C3F6B7" Association="Self.FK__musteri_g__muste__49C3F6B7">
+          <AssociationSet Name="FK__musteri_g__muste__04E4BC85" Association="Self.FK__musteri_g__muste__04E4BC85">
             <End Role="musteriler" EntitySet="musteriler" />
             <End Role="musteri_gonderileri" EntitySet="musteri_gonderileri" />
           </AssociationSet>
@@ -425,6 +427,7 @@
                 <ScalarProperty Name="musteri_id" ColumnName="musteri_id" />
                 <ScalarProperty Name="firma_kodlari_id" ColumnName="firma_kodlari_id" />
                 <ScalarProperty Name="resim_adres" ColumnName="resim_adres" />
+                <ScalarProperty Name="populerlik_puani" ColumnName="populerlik_puani" />
                 <ScalarProperty Name="aktif" ColumnName="aktif" />
                 <ScalarProperty Name="kayit_tarihi" ColumnName="kayit_tarihi" />
               </MappingFragment>

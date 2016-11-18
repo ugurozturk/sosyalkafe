@@ -80,22 +80,30 @@ namespace sosyalkafe.Controllers
             {
                 MatchCollection likecount = Regex.Matches(item.Groups[0].Value, likecountregexi);
                 MatchCollection thumbimage = Regex.Matches(item.Groups[0].Value, thumbimageregexi);
+                string thumbimageAdresi = thumbimage[0].Groups[1].Value;
+
 
                 int ilikecount = 0;
                 int.TryParse(likecount[0].Groups[1].Value, out ilikecount);
 
-                if (ilikecount > 10) //Like sayısı 10 dan fazla ise
+
+                //Like sayısı 10 dan fazla ise
+                //Reklam değil de insgtagrama bağlı ise
+                if (ilikecount > 10 && thumbimageAdresi.Contains("cdninstagram.com")) 
                 {
-                    bool resimVarmiSonuc = resimVarmi(thumbimage[0].Groups[1].Value);
+                    bool resimVarmiSonuc = resimVarmi(thumbimageAdresi);
 
                     if (resimVarmiSonuc)
                     {
+                        //TODO popülerlik puanını güncelle
+                        resimPopGuncelle(thumbimageAdresi, ilikecount);
+
                         continue; //Resim Varsa eklemeyi atla.
                     }
 
                     listem.Add(new Tuple<string, string>(
-                        likecount[0].Groups[1].Value,
-                        thumbimage[0].Groups[1].Value
+                        ilikecount.ToString(),
+                        thumbimageAdresi
                         ));
                 }
             }
@@ -106,12 +114,18 @@ namespace sosyalkafe.Controllers
             {
                 musteri_gonderileri mgonderi = new musteri_gonderileri();
                 mgonderi.musteri_id = 1; //TODO sonradan dinamik hale getir.
+
+                int pPuani = 0;
+                int.TryParse(veri.Item1, out pPuani);
+
+                mgonderi.populerlik_puani = pPuani;
                 mgonderi.resim_adres = veri.Item2;
                 mgonderi.aktif = 1; //TODO Kafenin isteğine bağlı olacak
                 mgonderi.firma_kodlari_id = firmaKodlari.firma_kodlari_id;
 
                 ent.musteri_gonderileri.Add(mgonderi);
                 ent.SaveChanges();
+                
             }
         }
 
@@ -131,5 +145,23 @@ namespace sosyalkafe.Controllers
 
             return true;
         }
+
+
+        public void resimPopGuncelle(string resimAdres, int pop)
+        {
+            resimAdres = resimAdres.Substring(resimAdres.IndexOf("cdninstagram.com"), resimAdres.LastIndexOf("?ig_cache_key"));
+
+            var veri = (from a in ent.musteri_gonderileri
+             where a.resim_adres.Contains(resimAdres)
+             select a).FirstOrDefault();
+
+            if (veri != null)
+            {
+                veri.populerlik_puani = pop;
+            }
+            ent.SaveChanges();
+        }
+
+
     }
 }

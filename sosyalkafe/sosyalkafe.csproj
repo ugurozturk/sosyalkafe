@@ -234,6 +234,10 @@
     <Content Include="Areas\Uygulama\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Uygulama\Views\Uygulama\Index.cshtml" />
     <Content Include="Areas\Uygulama\Views\Uygulama\Gosteri.cshtml" />
+    <Content Include="Areas\Uygulama\Content\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Areas\Uygulama\Content\fonts\fontawesome-webfonte0a5.eot" />
+    <Content Include="Areas\Uygulama\Content\fonts\fontawesome-webfonte0a5.svg" />
+    <Content Include="Areas\Uygulama\Content\fonts\fontawesome-webfonte0a5.woff" />
     <EntityDeploy Include="Models\sosyalkafeentity.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>sosyalkafeentity.Designer.cs</LastGenOutput>
@@ -241,10 +245,6 @@
     <Content Include="Models\sosyalkafeentity.edmx.diagram">
       <DependentUpon>sosyalkafeentity.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Uygulama\Content\fonts\fontawesome-webfontd41d.eot" />
-    <Content Include="Areas\Uygulama\Content\fonts\fontawesome-webfonte0a5.eot" />
-    <Content Include="Areas\Uygulama\Content\fonts\fontawesome-webfonte0a5.svg" />
-    <Content Include="Areas\Uygulama\Content\fonts\fontawesome-webfonte0a5.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
