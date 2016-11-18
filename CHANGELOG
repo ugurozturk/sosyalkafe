@@ -1,2 +1,7 @@
+> 0.0.5
+Instagramdan veriler çekildi.
+Veritabanı entegrasyonu yapıldı.
+Instagram daki farklı sunuculardan gelen dinamik linkler optimize edildi.
+
 > 0.0.1
 Visual Studio 2015 de başlangıç yapıldı.
