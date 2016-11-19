@@ -4,3 +4,7 @@
 3. 2015 VS da güncel haliyle düzgün çalışmaktadır.
 4. İstediğiniz yeri düzenleyebilir, commit edebilir, gönderebilirsiniz.
 5. Yaptığınız değişikliği de Pull Request yapıp göndermelisiniz.
+
+
+Kontrol için :
+url/Uygulama/godex
