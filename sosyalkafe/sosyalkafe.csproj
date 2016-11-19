@@ -179,9 +179,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\sosyalkafe.mdf" />
+    <Content Include="App_Data\sosyalkafe.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Data\sosyalkafe_log.ldf">
       <DependentUpon>sosyalkafe.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Areas\Uygulama\Content\css\bootstrap.min.css" />
     <Content Include="Areas\Uygulama\Content\css\font-awesome.min.css" />
@@ -245,6 +248,7 @@
     <Content Include="Models\sosyalkafeentity.edmx.diagram">
       <DependentUpon>sosyalkafeentity.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\sosyalkafe - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
