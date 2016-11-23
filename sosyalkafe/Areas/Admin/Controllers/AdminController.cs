@@ -15,6 +15,11 @@ namespace sosyalkafe.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult resimOnay()
+        {
+            return View();
+        }
+
         public void Guncelle(string firmaadi)
         {
             GenericController generic = new GenericController();

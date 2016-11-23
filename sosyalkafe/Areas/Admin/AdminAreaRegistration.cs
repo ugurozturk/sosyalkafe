@@ -20,7 +20,12 @@ namespace sosyalkafe.Areas.Admin
                 new { controller = "admin", action = "Guncelle", firmaadi = UrlParameter.Optional }
             );
 
-
+            context.MapRoute(
+                "Admin_resimonay",
+                "Admin/{action}/{firmaadi}",
+                new { controller = "admin", action = "Index", firmaadi = UrlParameter.Optional }
+            );
+            
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
