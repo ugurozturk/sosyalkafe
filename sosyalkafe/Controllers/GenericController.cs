@@ -95,7 +95,6 @@ namespace sosyalkafe.Controllers
 
                     if (resimVarmiSonuc)
                     {
-                        //TODO popülerlik puanını güncelle
                         resimPopGuncelle(thumbimageAdresi, ilikecount);
 
                         continue; //Resim Varsa eklemeyi atla.
@@ -120,7 +119,7 @@ namespace sosyalkafe.Controllers
 
                 mgonderi.populerlik_puani = pPuani;
                 mgonderi.resim_adres = veri.Item2;
-                mgonderi.aktif = 1; //TODO Kafenin isteğine bağlı olacak
+                mgonderi.aktif = null; //TODO Kafenin isteğine bağlı olacak
                 mgonderi.firma_kodlari_id = firmaKodlari.firma_kodlari_id;
 
                 ent.musteri_gonderileri.Add(mgonderi);

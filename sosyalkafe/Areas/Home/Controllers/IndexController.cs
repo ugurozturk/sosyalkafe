@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using sosyalkafe.Models;
 
 namespace sosyalkafe.Areas.Home.Controllers
 {
@@ -12,6 +13,32 @@ namespace sosyalkafe.Areas.Home.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult FirmaGirisi(string username, string password)
+        {
+            if (username.Length > 12) //Güvenlik amaçlı
+            {
+                return View();
+            }
+            
+            sosyalkafeEntities ent = new sosyalkafeEntities();
+            var firma = (from a in ent.firmalar
+                         where a.firma_kullaniciadi == username &&
+                         a.firma_sifresi == password
+                         select a).FirstOrDefault();
+
+            if (firma != null)
+            {
+                Session["firmaid"] = firma.firma_id;
+            }
+            else
+            {
+                return RedirectToAction("Index"); //TODO LOGLA
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

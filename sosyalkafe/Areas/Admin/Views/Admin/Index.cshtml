@@ -1,6 +1,7 @@
-﻿
+﻿@model  IEnumerable<sosyalkafe.Models.musteri_gonderileri>
 @{
     ViewBag.Title = "Index";
+
 }
 
 
@@ -26,63 +27,39 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="instagram_tag" placeholder="Tag Giriniz">
                                 </div>
+                            </div>
                             <!-- /.box-body -->
 
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">Güncelle</button>
+                                <button type="button" class="btn btn-primary" id="tagGuncelleBtn">Güncelle</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            </div>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Fotoğraf Engelleme</h3>
+                            <h3 class="box-title">Fotoğraf İnceleme</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="timeline-body">
                             <ul class="users-list clearfix">
-                                   
-                                    <li>
-                                        <img src="~/Areas/Admin/Content/indir.jpg" alt="User Image">
-                                        <button type="button" class="btn btn-box-tool">
-                                            <i class="fa fa-times"></i>
-                                        </button>
+                                   @foreach (var item in Model)
+                                   {
+                                    <li id="li @Html.DisplayFor(modelItem => item.musteri_gonderi_id)">
+                                      <img src="@Html.DisplayFor(modelItem => item.resim_adres)" alt="User Image">
+                                      <button type="button" class="btn btn-box-tool">
+                                          <i class="fa fa-thumbs-down" name="iptal" id="iptal @Html.DisplayFor(modelItem => item.musteri_gonderi_id)"></i>
+                                      </button>
+                                      <button type="button" class="btn btn-box-tool">
+                                          <i class="fa fa-thumbs-o-up" name="onay" id="onay @Html.DisplayFor(modelItem => item.musteri_gonderi_id)"></i>
+                                      </button>
                                     </li>
-                                    <li>
-                                        <img src="~/Areas/Admin/Content/indir.jpg" alt="User Image">
-                                        <button type="button" class="btn btn-box-tool">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <img src="~/Areas/Admin/Content/indir.jpg" alt="User Image">
-                                        <button type="button" class="btn btn-box-tool">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </li>
-                                <li>
-                                    <img src="~/Areas/Admin/Content/indir.jpg" alt="User Image">
-                                    <button type="button" class="btn btn-box-tool">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </li>
-                                <li>
-                                    <img src="~/Areas/Admin/Content/indir.jpg" alt="User Image">
-                                    <button type="button" class="btn btn-box-tool">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </li>
-                                <li>
-                                    <img src="~/Areas/Admin/Content/indir.jpg" alt="User Image">
-                                    <button type="button" class="btn btn-box-tool">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </li>
-</ul>
+                                   }
+                                    
+                            </ul>
                             <!-- /.users-list -->
                         </div>
                        
@@ -93,5 +70,7 @@
         </section>
         <!-- /.content -->
     </div>
+
+
    
     

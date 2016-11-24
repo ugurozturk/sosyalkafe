@@ -1,4 +1,4 @@
-/*! AdminLTE app.js
+﻿/*! AdminLTE app.js
  * ================
  * Main JS application file for AdminLTE v2. This file
  * should be included in all pages. It controls some layout
@@ -761,3 +761,57 @@ function _init() {
     });
   };
 }(jQuery));
+
+
+//GODEX KODLARI
+
+    $("[name=\"iptal\"]").click(function (asd) {
+        var objeid = asd.target.id;
+        var resimid = objeid.substr(6);
+
+       $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/admin/resimiptal",
+            data: {
+                id : resimid
+            },
+            success: function (data) {
+                $("[id='li "+resimid+"']").remove();
+            }
+        });
+    });
+
+    $("[name=\"onay\"]").click(function (asd) {
+        var objeid = asd.target.id;
+        var resimid = objeid.substr(5);
+
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/admin/resimOnay",
+            data: {
+                id : resimid
+            },
+            success: function (data) {
+                console.log("Onay işlemi başarılı");
+                $("[id='li "+resimid+"']").remove();
+            }
+        });
+    });
+
+    $("[id=\"tagGuncelleBtn\"]").click(function () {
+        var tag = $("#instagram_tag").val();
+
+       $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/admin/tagGuncelle",
+            data: {
+                tag : tag
+            },
+            success: function (data) {
+                alert("Tagınız Güncellendi");
+            }
+        });
+    });
