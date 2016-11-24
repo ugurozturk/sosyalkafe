@@ -19,7 +19,8 @@ namespace sosyalkafe.Areas.Admin.Controllers
 
             var musGonderileri = (from a in ent.musteri_gonderileri
                                                   where a.aktif == null && 
-                                                  a.firma_kodlari.firma_id == firmaid
+                                                  a.firma_kodlari.firma_id == firmaid &&
+                                                  a.firma_kodlari.aktif == 1
                                   select a).ToList();
 
 
@@ -62,8 +63,8 @@ namespace sosyalkafe.Areas.Admin.Controllers
                 ent.SaveChanges();
 
             }
-
-
+            string firmaKullaniciAdi = Session["firmakullanici"].ToString();
+            Guncelle(firmaKullaniciAdi);
             return Json(new { Result = "OK" });
         }
 

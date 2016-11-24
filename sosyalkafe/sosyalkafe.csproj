@@ -1152,6 +1152,7 @@
     <Content Include="Areas\Admin\Content\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="Areas\Admin\Content\plugins\input-mask\phone-codes\phone-codes.json" />
     <Content Include="Areas\Admin\Views\Admin\resimOnay.cshtml" />
+    <None Include="Properties\PublishProfiles\ftpden.pubxml" />
     <None Include="Properties\PublishProfiles\sosyalkafe - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

@@ -26,7 +26,8 @@ namespace sosyalkafe.Areas.Uygulama.Controllers
             List<musteri_gonderileri> mgonderileri =
                 (from a in ent.musteri_gonderileri
                  where a.firma_kodlari.aktif == 1 &&
-                 a.firma_kodlari.firmalar.firma_kullaniciadi == firmaadi
+                 a.firma_kodlari.firmalar.firma_kullaniciadi == firmaadi &&
+                 a.aktif == 1
                  orderby a.musteri_gonderi_id descending
                  select a).Take(30).ToList();
 

@@ -32,6 +32,7 @@ namespace sosyalkafe.Areas.Home.Controllers
             if (firma != null)
             {
                 Session["firmaid"] = firma.firma_id;
+                Session["firmakullanici"] = firma.firma_kullaniciadi;
             }
             else
             {
