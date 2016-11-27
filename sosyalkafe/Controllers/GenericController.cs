@@ -119,6 +119,7 @@ namespace sosyalkafe.Controllers
 
                 mgonderi.populerlik_puani = pPuani;
                 mgonderi.resim_adres = veri.Item2;
+                mgonderi.kayit_tarihi = DateTime.Now;
                 mgonderi.aktif = null; //TODO Kafenin isteğine bağlı olacak
                 mgonderi.firma_kodlari_id = firmaKodlari.firma_kodlari_id;
 

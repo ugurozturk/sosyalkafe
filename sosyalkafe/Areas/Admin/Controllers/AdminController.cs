@@ -30,7 +30,7 @@ namespace sosyalkafe.Areas.Admin.Controllers
         public JsonResult tagGuncelle(string firmaid, string tag)
         {
             //TODO Firma id ile gelen yerde ki firma id kontrol et
-            
+            //TODO Tagı güncelleyenin ip adresi alınacak
             string _firmaid = Session["firmaid"].ToString();
             int orjfirmaid = int.Parse(_firmaid);
             
@@ -60,6 +60,7 @@ namespace sosyalkafe.Areas.Admin.Controllers
                 fkodu.firma_id = orjfirmaid;
                 fkodu.firma_kod_adi = tag;
                 fkodu.kod_tipi_id = 1;
+                fkodu.kayit_tarihi = DateTime.Now;
 
                 ent.firma_kodlari.Add(fkodu);
                 ent.SaveChanges();
@@ -77,6 +78,7 @@ namespace sosyalkafe.Areas.Admin.Controllers
 
         public JsonResult resimOnay(string id)
         {
+            //TODO resim onaylayanın ip adresi alınacak
             int resimid = 0;
 
             int.TryParse(id, out resimid);
@@ -97,6 +99,7 @@ namespace sosyalkafe.Areas.Admin.Controllers
 
         public JsonResult resimiptal(string id)
         {
+            //TODO resmi iptal edenin ip adresi alınacak
             int resimid = 0;
 
             int.TryParse(id, out resimid);
