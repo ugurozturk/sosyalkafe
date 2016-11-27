@@ -43,7 +43,8 @@ namespace sosyalkafe.Areas.Admin.Controllers
             {
                 kontrol.aktif = 1;
                 (from a in ent.firma_kodlari
-                 where a.firma_kodlari_id != kontrol.firma_kodlari_id
+                 where a.firma_kodlari_id != kontrol.firma_kodlari_id &&
+                 a.firma_id == orjfirmaid
                  select a).ToList().ForEach(x => x.aktif = 0);
                 ent.SaveChanges();
                 
@@ -51,6 +52,7 @@ namespace sosyalkafe.Areas.Admin.Controllers
             else
             {
                 (from a in ent.firma_kodlari
+                 where a.firma_id == orjfirmaid
                  select a).ToList().ForEach(x => x.aktif = 0);
 
                 firma_kodlari fkodu = new firma_kodlari();
@@ -61,7 +63,6 @@ namespace sosyalkafe.Areas.Admin.Controllers
 
                 ent.firma_kodlari.Add(fkodu);
                 ent.SaveChanges();
-
             }
             string firmaKullaniciAdi = Session["firmakullanici"].ToString();
             Guncelle(firmaKullaniciAdi);
