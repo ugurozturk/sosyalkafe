@@ -51,30 +51,23 @@
                 <h1><i class="fa fa-instagram"></i> &nbsp; Canlı Instagram Akışı <span style="color:#9FD5D9; font-weight: 500; float:right;">#@ViewBag.firmakodu</span></h1>
 
                 <div class="instagramWidget">
-                    @{
-                        List<sosyalkafe.Models.musteri_gonderileri> mgonderileri = ViewBag.listem;
-                        foreach (sosyalkafe.Models.musteri_gonderileri resimadres in mgonderileri)
-                        {
-                            WriteLiteral("<div class=\"item\"><img src=\""+ resimadres.resim_adres + "\" width=\"100% \"></div>");
-                        }
-                    }
-
                 </div>
                 <div style="clear:both"></div>
 
                 <div style="width: 100%; height: 10px;"></div>
-
             </div>
-
         </div>
     </div>
-
 </div>
 
 <div class="overlay"></div>
 <div class="message"></div>
+<script>
+    var firmaadi = "@ViewBag.firadi";
+</script>
 
 <script src="~/Areas/Uygulama/Content/js/jquery.min.js"></script>
+<script src="~/Areas/Uygulama/Content/js/uygulama.js"></script>
 <script src="~/Areas/Uygulama/Content/screen/js/imagesloaded.min.js"></script>
 
 

@@ -1075,6 +1075,7 @@
     <Content Include="Areas\Uygulama\Content\fonts\glyphicons-halflings-regular.html" />
     <Content Include="Areas\Uygulama\Content\fonts\glyphicons-halflings-regulard41d.html" />
     <Content Include="Areas\Uygulama\Content\js\jquery.min.js" />
+    <Content Include="Areas\Uygulama\Content\js\uygulama.js" />
     <Content Include="Areas\Uygulama\Content\screen\creoline-logo-white-copy.png" />
     <Content Include="Areas\Uygulama\Content\screen\creoline-logo-white-normal.png" />
     <Content Include="Areas\Uygulama\Content\screen\creoline-logo-white.png" />
