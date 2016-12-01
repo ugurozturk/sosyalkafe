@@ -69,11 +69,24 @@ namespace sosyalkafe.Areas.Admin.Controllers
             Guncelle(firmaKullaniciAdi);
             return Json(new { Result = "OK" });
         }
-
+        
         public void Guncelle(string firmaadi)
         {
             GenericController generic = new GenericController();
             generic.ResimEkle(firmaadi);
+        }
+
+        public void TumunuGuncelle()
+        {
+            var lfirmalar = (from a in ent.firmalar
+                            where a.aktif == 1
+                            select a).ToList();
+            foreach (firmalar item in lfirmalar)
+            {
+                GenericController generic = new GenericController();
+                generic.ResimEkle(item.firma_kullaniciadi);
+            }
+            
         }
 
         public JsonResult resimOnay(string id)
