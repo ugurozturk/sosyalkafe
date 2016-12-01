@@ -91,7 +91,7 @@ namespace sosyalkafe.Controllers
                 //Reklam değil de insgtagrama bağlı ise
                 if (ilikecount > 10 && thumbimageAdresi.Contains("cdninstagram.com")) 
                 {
-                    bool resimVarmiSonuc = resimVarmi(thumbimageAdresi);
+                    bool resimVarmiSonuc = resimVarmi(thumbimageAdresi, firmaAdi);
 
                     if (resimVarmiSonuc)
                     {
@@ -129,13 +129,13 @@ namespace sosyalkafe.Controllers
             }
         }
 
-        public bool resimVarmi(string resimAdres)
+        public bool resimVarmi(string resimAdres, string firmaAdi)
         {
             //Farklı Sunucudan çekilen aynı resimlerin çakılması önlendi.
             resimAdres = resimAdres.Substring(resimAdres.IndexOf("cdninstagram.com"), resimAdres.LastIndexOf("?ig_cache_key"));
             
             var veri = (from a in ent.musteri_gonderileri
-                        where a.resim_adres.Contains(resimAdres)
+                        where a.firma_kodlari.firmalar.firma_kullaniciadi == firmaAdi && a.resim_adres.Contains(resimAdres)
                         select a).FirstOrDefault();
 
             if (veri == null)
