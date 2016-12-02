@@ -21,6 +21,12 @@ namespace sosyalkafe.Areas.Admin
             );
 
             context.MapRoute(
+                "Admin_ayarlar",
+                "Admin/ayarlar/{action}/{firmaadi}",
+                new { controller = "ayarlar", action = "Index", firmaadi = UrlParameter.Optional }
+            );
+
+            context.MapRoute(
                 "Admin_resimonay",
                 "Admin/{action}/{firmaadi}",
                 new { controller = "admin", action = "Index", firmaadi = UrlParameter.Optional }

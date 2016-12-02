@@ -134,6 +134,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AyarlarController.cs" />
     <Compile Include="Areas\Home\Controllers\IndexController.cs" />
     <Compile Include="Areas\Home\HomeAreaRegistration.cs" />
     <Compile Include="Areas\Uygulama\Controllers\UygulamaController.cs" />
@@ -1158,6 +1159,7 @@
     <Content Include="Models\sosyalkafeentity.edmx.diagram">
       <DependentUpon>sosyalkafeentity.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\Ayarlar\Index.cshtml" />
     <None Include="Properties\PublishProfiles\ftpden.pubxml" />
     <None Include="Properties\PublishProfiles\sosyalkafe - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
