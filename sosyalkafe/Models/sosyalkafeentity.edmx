@@ -5,6 +5,21 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="sosyalkafeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ayarlar">
+          <Key>
+            <PropertyRef Name="ayar_id" />
+          </Key>
+          <Property Name="ayar_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ayar_adi" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="firma_ayarlari">
+          <Key>
+            <PropertyRef Name="firma_ayar_id" />
+          </Key>
+          <Property Name="firma_ayar_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ayar_id" Type="int" />
+          <Property Name="firma_ayar_degeri" Type="varchar" MaxLength="1000" />
+        </EntityType>
         <EntityType Name="firma_kodlari">
           <Key>
             <PropertyRef Name="firma_kodlari_id" />
@@ -146,7 +161,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_firmaayarlari_ayar">
+          <End Role="ayarlar" Type="Self.ayarlar" Multiplicity="0..1" />
+          <End Role="firma_ayarlari" Type="Self.firma_ayarlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ayarlar">
+              <PropertyRef Name="ayar_id" />
+            </Principal>
+            <Dependent Role="firma_ayarlari">
+              <PropertyRef Name="ayar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="sosyalkafeModelStoreContainer">
+          <EntitySet Name="ayarlar" EntityType="Self.ayarlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="firma_ayarlari" EntityType="Self.firma_ayarlari" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="firma_kodlari" EntityType="Self.firma_kodlari" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="firma_odeme_hareketi" EntityType="Self.firma_odeme_hareketi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="firmalar" EntityType="Self.firmalar" Schema="dbo" store:Type="Tables" />
@@ -178,12 +207,33 @@
             <End Role="musteriler" EntitySet="musteriler" />
             <End Role="musteri_gonderileri" EntitySet="musteri_gonderileri" />
           </AssociationSet>
+          <AssociationSet Name="fk_firmaayarlari_ayar" Association="Self.fk_firmaayarlari_ayar">
+            <End Role="ayarlar" EntitySet="ayarlar" />
+            <End Role="firma_ayarlari" EntitySet="firma_ayarlari" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sosyalkafeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ayarlar">
+          <Key>
+            <PropertyRef Name="ayar_id" />
+          </Key>
+          <Property Name="ayar_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ayar_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="firma_ayarlari" Relationship="Self.fk_firmaayarlari_ayar" FromRole="ayarlar" ToRole="firma_ayarlari" />
+        </EntityType>
+        <EntityType Name="firma_ayarlari">
+          <Key>
+            <PropertyRef Name="firma_ayar_id" />
+          </Key>
+          <Property Name="firma_ayar_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ayar_id" Type="Int32" />
+          <Property Name="firma_ayar_degeri" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ayarlar" Relationship="Self.fk_firmaayarlari_ayar" FromRole="firma_ayarlari" ToRole="ayarlar" />
+        </EntityType>
         <EntityType Name="firma_kodlari">
           <Key>
             <PropertyRef Name="firma_kodlari_id" />
@@ -265,6 +315,18 @@
           <Property Name="odeme_miktari" Type="Int32" />
           <NavigationProperty Name="firma_odeme_hareketi" Relationship="Self.FK__firma_ode__odeme__4D94879B" FromRole="odeme_secenekleri" ToRole="firma_odeme_hareketi" />
         </EntityType>
+        <Association Name="fk_firmaayarlari_ayar">
+          <End Role="ayarlar" Type="Self.ayarlar" Multiplicity="0..1" />
+          <End Role="firma_ayarlari" Type="Self.firma_ayarlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ayarlar">
+              <PropertyRef Name="ayar_id" />
+            </Principal>
+            <Dependent Role="firma_ayarlari">
+              <PropertyRef Name="ayar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__firma_kod__firma__5FB337D6">
           <End Role="firmalar" Type="Self.firmalar" Multiplicity="0..1" />
           <End Role="firma_kodlari" Type="Self.firma_kodlari" Multiplicity="*" />
@@ -338,6 +400,8 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="sosyalkafeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ayarlar" EntityType="Self.ayarlar" />
+          <EntitySet Name="firma_ayarlari" EntityType="Self.firma_ayarlari" />
           <EntitySet Name="firma_kodlari" EntityType="Self.firma_kodlari" />
           <EntitySet Name="firma_odeme_hareketi" EntityType="Self.firma_odeme_hareketi" />
           <EntitySet Name="firmalar" EntityType="Self.firmalar" />
@@ -345,6 +409,10 @@
           <EntitySet Name="musteri_gonderileri" EntityType="Self.musteri_gonderileri" />
           <EntitySet Name="musteriler" EntityType="Self.musteriler" />
           <EntitySet Name="odeme_secenekleri" EntityType="Self.odeme_secenekleri" />
+          <AssociationSet Name="fk_firmaayarlari_ayar" Association="Self.fk_firmaayarlari_ayar">
+            <End Role="ayarlar" EntitySet="ayarlar" />
+            <End Role="firma_ayarlari" EntitySet="firma_ayarlari" />
+          </AssociationSet>
           <AssociationSet Name="FK__firma_kod__firma__5FB337D6" Association="Self.FK__firma_kod__firma__5FB337D6">
             <End Role="firmalar" EntitySet="firmalar" />
             <End Role="firma_kodlari" EntitySet="firma_kodlari" />
@@ -376,6 +444,23 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="sosyalkafeModelStoreContainer" CdmEntityContainer="sosyalkafeEntities">
+          <EntitySetMapping Name="ayarlar">
+            <EntityTypeMapping TypeName="sosyalkafeModel.ayarlar">
+              <MappingFragment StoreEntitySet="ayarlar">
+                <ScalarProperty Name="ayar_id" ColumnName="ayar_id" />
+                <ScalarProperty Name="ayar_adi" ColumnName="ayar_adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="firma_ayarlari">
+            <EntityTypeMapping TypeName="sosyalkafeModel.firma_ayarlari">
+              <MappingFragment StoreEntitySet="firma_ayarlari">
+                <ScalarProperty Name="firma_ayar_id" ColumnName="firma_ayar_id" />
+                <ScalarProperty Name="ayar_id" ColumnName="ayar_id" />
+                <ScalarProperty Name="firma_ayar_degeri" ColumnName="firma_ayar_degeri" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="firma_kodlari">
             <EntityTypeMapping TypeName="sosyalkafeModel.firma_kodlari">
               <MappingFragment StoreEntitySet="firma_kodlari">

@@ -142,51 +142,47 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ayarlar.cs">
+      <DependentUpon>sosyalkafeentity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\firmalar.cs">
       <DependentUpon>sosyalkafeentity.tt</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Models\firma_ayarlari.cs">
+      <DependentUpon>sosyalkafeentity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\firma_kodlari.cs">
       <DependentUpon>sosyalkafeentity.tt</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\firma_odeme_hareketi.cs">
       <DependentUpon>sosyalkafeentity.tt</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\kod_tipi.cs">
       <DependentUpon>sosyalkafeentity.tt</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\musteriler.cs">
       <DependentUpon>sosyalkafeentity.tt</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\musteri_gonderileri.cs">
       <DependentUpon>sosyalkafeentity.tt</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\odeme_secenekleri.cs">
       <DependentUpon>sosyalkafeentity.tt</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\sosyalkafeentity.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>sosyalkafeentity.Context.tt</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\sosyalkafeentity.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>sosyalkafeentity.tt</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\sosyalkafeentity.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>sosyalkafeentity.edmx</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1093,13 +1089,11 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>sosyalkafeentity.edmx</DependentUpon>
       <LastGenOutput>sosyalkafeentity.Context.cs</LastGenOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Models\sosyalkafeentity.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>sosyalkafeentity.edmx</DependentUpon>
       <LastGenOutput>sosyalkafeentity.cs</LastGenOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1120,15 +1114,6 @@
     <Content Include="Areas\Uygulama\Content\fonts\fontawesome-webfonte0a5.eot" />
     <Content Include="Areas\Uygulama\Content\fonts\fontawesome-webfonte0a5.svg" />
     <Content Include="Areas\Uygulama\Content\fonts\fontawesome-webfonte0a5.woff" />
-    <EntityDeploy Include="Models\sosyalkafeentity.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>sosyalkafeentity.Designer.cs</LastGenOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EntityDeploy>
-    <Content Include="Models\sosyalkafeentity.edmx.diagram">
-      <DependentUpon>sosyalkafeentity.edmx</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Areas\Admin\Content\bootstrap\css\bootstrap.css.map" />
     <Content Include="Areas\Admin\Content\bootstrap\css\bootstrap.min.css.map" />
     <Content Include="Areas\Admin\Content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
@@ -1166,6 +1151,13 @@
     <Content Include="Areas\Admin\Content\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="Areas\Admin\Content\plugins\input-mask\phone-codes\phone-codes.json" />
     <Content Include="Areas\Admin\Views\Admin\resimOnay.cshtml" />
+    <EntityDeploy Include="Models\sosyalkafeentity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>sosyalkafeentity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\sosyalkafeentity.edmx.diagram">
+      <DependentUpon>sosyalkafeentity.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\ftpden.pubxml" />
     <None Include="Properties\PublishProfiles\sosyalkafe - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

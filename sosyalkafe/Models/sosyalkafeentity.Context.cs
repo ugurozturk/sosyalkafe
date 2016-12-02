@@ -25,6 +25,8 @@ namespace sosyalkafe.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ayarlar> ayarlar { get; set; }
+        public virtual DbSet<firma_ayarlari> firma_ayarlari { get; set; }
         public virtual DbSet<firma_kodlari> firma_kodlari { get; set; }
         public virtual DbSet<firma_odeme_hareketi> firma_odeme_hareketi { get; set; }
         public virtual DbSet<firmalar> firmalar { get; set; }

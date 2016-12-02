@@ -162,6 +162,10 @@ namespace sosyalkafe.Controllers
             ent.SaveChanges();
         }
 
+        public void eksikVerileriEkle()
+        {
+
+        }
 
     }
 }
