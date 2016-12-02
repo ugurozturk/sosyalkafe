@@ -1,0 +1,172 @@
+﻿
+@{
+    ViewBag.Title = "Ayarlar";
+}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Genel Ayarlar
+        <small>Fotoğraf Akışı ve Genel Ayarlar</small>
+      </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+<div class="row">
+      <!-- Hashtag Alanı -->
+      <div class="col-md-4">
+          <div class="box box-primary">
+              
+              <div class="box-header with-border">
+                  <h3 class="box-title">Firma Hakkında</h3>
+              </div>
+              <div class="box-body">
+                  <img class="img-responsive" src="http://sosyal.godexsoft.com/Areas/Uygulama/Content/screen/logo-white.png" alt="Cinque Terre">
+              </div>
+              
+          </div>
+          
+      </div>
+      <div class="col-md-4">
+          <div class="box box-primary">
+              
+              <div class="box-header with-border">
+                  <h3 class="box-title">Akış Ayarları</h3>
+              </div>
+              <form role="form">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="radio"><label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Akış Sadece Onay ile Gerçekleşsin</label></div>
+                                   <div class="radio"><label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Akış Otomatik Gerçekleşsin</label></div>
+                                    <h5>Fotoğraf Beğeni Sınırı</h5>
+                                    <input type="text" class="form-control" id="instagram_tag" placeholder="15">
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+
+                            <div class="box-footer">
+                                <button type="button" class="btn btn-primary" id="tagGuncelleBtn">Güncelle</button>
+                            </div>
+                        </form>
+          </div>
+          
+      </div>
+      <div class="col-md-4">
+          <div class="box box-primary">
+              
+              <div class="box-header with-border">
+                  <h3 class="box-title">Sosyal Medya Hesapları</h3>
+              </div>
+              <form role="form">
+                            <div class="box-body">
+                                <!-- Twitter Kullanıcı Adı -->
+                                <div class="input-group">
+                                     <span class="input-group-addon"><i class="fa fa-fw fa-twitter"></i></span>
+                                         <input type="text" class="form-control" placeholder="Twitter Kullanıcı Adı">
+                                 </div>
+                                 <!-- /Twitter Kullanıcı Adı -->
+                                 <br />
+                                 <!-- Facebook Kullanıcı Adı -->
+                                 <div class="input-group">
+                                     <span class="input-group-addon"><i class="fa fa-fw fa-facebook"></i></span>
+                                         <input type="text" class="form-control" placeholder="Facebook Kullanıcı Adı">
+                                  </div>
+                                 <!-- /Facebook Kullanıcı Adı -->
+                                 <br />
+                                 <!-- Websitesi -->
+                                 <div class="input-group">
+                                     <span class="input-group-addon"><i class="fa fa-fw fa-internet-explorer"></i></span>
+                                         <input type="text" class="form-control" placeholder="Web Sitesi">
+                                  </div>
+                                 <!-- /Websitesi -->
+                            </div>
+                            <!-- /.box-body -->
+
+                            <div class="box-footer">
+                                <button type="button" class="btn btn-primary" id="tagGuncelleBtn">Güncelle</button>
+                            </div>
+                        </form>
+          </div>
+          
+      </div>
+      
+      <!--/ Hashtag Alanı -->
+</div>
+<div class="row">
+      <div class="col-md-4">
+          <div class="box box-primary">
+              
+              <div class="box-header with-border">
+                  <h3 class="box-title">Etkinlik Ekle</h3>
+              </div>
+              <form role="form">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <h5>Etkinlik Tarihi</h5>
+                                    <input type="text" class="form-control" id="instagram_tag" placeholder="01/01/2017">
+                                    <h5>Etkinlik Saati</h5>
+                                    <input type="text" class="form-control" id="instagram_tag" placeholder="15:00">
+                                    <h5>Gösterilecek Metin</h5>
+                  <textarea class="form-control"  rows="6" placeholder="Etkinlik Metni Giriniz"></textarea>
+                </div>
+                            </div>
+                            <!-- /.box-body -->
+
+                            <div class="box-footer">
+                                <button type="button" class="btn btn-primary" id="tagGuncelleBtn">Ekle</button>
+                            </div>
+                        </form>
+          </div>
+          
+      </div>
+      <div class="col-md-8">
+          <div class="box box-primary">
+              <div class="box-header with-border">
+                  <h3 class="box-title">Etkinlikler</h3>
+              </div>
+              <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tbody><tr>
+                  <th>İşlem</th>
+                  <th>Tarih</th>
+                  <th>Saat</th>
+                  <th>Metin</th>
+                </tr>
+                <tr>
+                  <td><div class="btn-group">
+                      <button type="button" class="btn btn-default"><i class="fa fa-fw fa-edit"></i></button>
+                      <button type="button" class="btn btn-default"><i class="fa fa-fw fa-times"></i></button>
+                    </div> </td>
+                    <td>01/01/2017</td>
+                    <td>15:00</td>
+                  <td>Yönetim Bilişim Sistemleri Klüp toplantısı.</td>
+                </tr>
+                
+                <tr>
+                  <td><div class="btn-group">
+                      <button type="button" class="btn btn-default"><i class="fa fa-fw fa-edit"></i></button>
+                      <button type="button" class="btn btn-default"><i class="fa fa-fw fa-times"></i></button>
+                    </div> </td>
+                    <td>02/01/2017</td>
+                    <td>17:00</td>
+                  <td>X Partisi Gençlik Kolları Toplantısı.</td>
+                </tr>
+                
+              </tbody></table>
+            </div>
+          </div>
+          
+      </div>
+      
+      
+          
+      </div>
+      <!--/ Hashtag Alanı -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
