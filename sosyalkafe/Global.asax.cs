@@ -17,5 +17,16 @@ namespace sosyalkafe
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Session_Start(object sender, EventArgs e)
+        {
+            ///Doğrudan url den başka fonksiyonlara erişilmesini engelle
+            if (!this.Request.RawUrl.Contains("/u/") && 
+                !this.Request.RawUrl.Contains("Guncelle") &&
+                this.Request.RawUrl != "/home/Index/firmagirisi")
+            {
+                Response.Redirect("~");
+            }
+        }
     }
 }

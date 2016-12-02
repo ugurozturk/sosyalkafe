@@ -12,6 +12,7 @@ namespace sosyalkafe.Areas.Home.Controllers
         // GET: Home/Index
         public ActionResult Index()
         {
+            Session.Abandon();
             return View();
         }
 
@@ -39,7 +40,7 @@ namespace sosyalkafe.Areas.Home.Controllers
                 return RedirectToAction("Index"); //TODO LOGLA
             }
 
-            return RedirectToAction("Index");
+            return Redirect("~/admin");
         }
     }
 }

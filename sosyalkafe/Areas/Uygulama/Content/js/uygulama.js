@@ -9,7 +9,7 @@ var resimler = new Array();
 
 $(document).ready(function () {
     g();
-    setInterval(function(){g()}, 60000); //dakikada bir
+    setInterval(function () { g();}, 60000); //dakikada bir
 });
 
 function g() {
@@ -23,7 +23,7 @@ function g() {
             success: function (data) {
                 console.log(data.resimlerList);
                 $(data.resimlerList).each(function (index) {
-                    if (resimler.indexOf(data.resimlerList[index].resimid) == -1) {
+                    if (resimler.indexOf(data.resimlerList[index].resimid) === -1) {
                         resimler.push(data.resimlerList[index].resimid);
                         resimYenile(data.resimlerList[index].resimAdres);
                     }

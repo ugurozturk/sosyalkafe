@@ -14,8 +14,27 @@ namespace sosyalkafe.Areas.Admin.Controllers
         // GET: Admin/Admin
         public ActionResult Index()
         {
+            if (Session["firmaid"] == null)
+            {
+                return Redirect("~");
+            }
+
             string _firmaid = Session["firmaid"].ToString();
             int firmaid = int.Parse(_firmaid);
+
+            var firmakodu = (from a in ent.firma_kodlari
+                             where a.aktif == 1 &&
+                             a.firma_id == firmaid
+                             select a).FirstOrDefault();
+            if (firmakodu != null)
+            {
+                ViewBag.firmaKodu = firmakodu.firma_kod_adi;
+            }
+            else
+            {
+                ViewBag.firmaKodu = ""; // Firmanın herhangi bir tagı yoksa
+            }
+            
 
             var musGonderileri = (from a in ent.musteri_gonderileri
                                                   where a.aktif == null && 

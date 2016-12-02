@@ -812,6 +812,8 @@ function _init() {
             },
             success: function (data) {
                 alert("Tagınız Güncellendi");
+                var currentLocation = window.location;
+                window.location.href = currentLocation;
             }
         });
     });
